@@ -1,29 +1,43 @@
 import unittest
+from models.user import User
 
 
-class OutcomesTest(unittest.TestCase):
+class ShopTestCase(unittest.TestCase):
+    def setUp(self):
+        self.user = User()
 
-    def test(self):
-        self.assertTrue(True)
+    def test_shopping_list_initialy_empty(self):
+        self.assertEqual(self.user.shopping_lists, {})
 
-    def test_fail(self):
-        self.assertTrue(False)
+    def test_create_shopping_list_successfully(self):
+        initial_room_count = len(self.user.shopping_lists)
+        cuttlery_list = self.user.create_shopping_list('Cuttlery')
+        self.assertTrue(cuttlery_list)
+        new_room_count = len(self.user.shopping_lists)
+        self.assertEqual(new_room_count - initial_room_count, 1)
 
-    def test_error(self):
-        raise RuntimeError('Test error!')
+    def test_create_shopping_list_when_list_already_exists(self):
+        self.user.shopping_lists = {'Shoes': ['flats']}
+        self.assertEqual(self.user.create_shopping_list('Shoes', 'flats'),
+                         'Shopping List already exists!', msg='Shopping List already exists!')
 
-    def test_signup(self):
-        pass
+    def test_update_shopping_list(self):
+        self.user.shopping_lists = {'shoes': ['flats']}
+        self.assertEqual(self.user.update_shopping_list(
+            'shoes', 'flat_shoes'), {'flat_shoes': ['flats']})
 
-    def test_login(self):
-        pass
+    def test_updating_non_existing_shopping_list(self):
+        self.user.shopping_lists = {'Shoes': ['flats']}
+        self.assertEqual(self.user.update_shopping_list('Shoe', 'flats'),
+                         'list name does not exist here', msg='list name does not exist here')
 
-    def test_view_list(self):
-        pass
+    def test_update_shopping_list_item(self):
+        self.user.shopping_lists = {'shoes': ['flats']}
+        self.assertEqual(self.user.update_shopping_list_item(
+            'shoes', 'flats', 'flat'), {'shoes': ['flat']})
 
-    def test_create_list(self):
-        pass
+    def test_updating_non_existing_shopping_list_item(self):
+        self.user.shopping_lists = {'Shoes': ['flats']}
+        self.assertEqual(self.user.update_shopping_list_item('Shoes', 'flas', 'flat'),
+                         'Item not in list', msg='Item not in list')
 
-
-if  __name__ == '__main_':
-    unittest.main()
