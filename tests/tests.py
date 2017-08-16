@@ -1,5 +1,5 @@
 import unittest
-from models.user import User
+from app.user import User
 
 
 class ShopTestCase(unittest.TestCase):
@@ -41,3 +41,16 @@ class ShopTestCase(unittest.TestCase):
         self.assertEqual(self.user.update_shopping_list_item('Shoes', 'flas', 'flat'),
                          'Item not in list', msg='Item not in list')
 
+    def test_read_shopping_list_items(self):
+        self.user.shopping_lists = {'shoes': ['flats', 'highs']}
+        self.assertEqual(self.user.read_list('shoes'), ['flats', 'highs'])
+
+    def test_delete_shopping_list(self):
+        self.user.shopping_lists = {'shoes': ['flats', 'highs'], 'grocery': ['onions', 'tomatoes']}
+        self.assertEqual(self.user.delete_shopping_list(
+            'shoes'), {'grocery': ['onions', 'tomatoes']})
+
+    def test_delete_shopping_list_item(self):
+        self.user.shopping_lists = {'shoes': ['flats', 'highs'], 'grocery': ['onions', 'tomatoes']}
+        self.assertEqual(self.user.delete_shopping_list_item('shoes', 'flats'), {
+                         'shoes': ['highs'], 'grocery': ['onions', 'tomatoes']})
