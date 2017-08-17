@@ -49,7 +49,7 @@ padding-top:10px;
 width: 500px;
     background: #fafafa;
     margin: 1% auto 4% auto;
-    padding: 20px 0px;
+    padding: 0px 0px 20px 0px;
     text-align: center;
     border: 1px solid rgba(0,0,0,0.1);
     box-shadow: 0px 13px 60px 10px rgba(0,0,0,0.1);
@@ -58,15 +58,23 @@ width: 500px;
 .signin .name{
 overflow: hidden;
 background: #d9373d;
-padding: 18px 15%;
-margin: 35px 0px;
+padding: 18px 13%;
+margin: 30px 0px;
 }
+
+.signin .email{
+overflow: hidden;
+background: #35b729;
+padding: 18px 13%;
+margin: 30px 0px;
+}
+
 
 .signin .pass{
 overflow: hidden;
 background: #ff8d1f;
-padding: 18px 15%;
-margin: 25px 0px;
+padding: 18px 13%;
+margin: 30px 0px;
 
 }
 
@@ -101,10 +109,26 @@ text-align: center !important;
 padding: 10px;
 }
 
-footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+ul.list li{
+text-decoration:none;
+width: 65%;
+margin: 0px auto;
+list-style:none;
 }
+
+
+ul.list li .item{
+float: left;
+}
+
+ul.list li a.item{
+color: #008e9f;
+}
+
+ul.list li a.side{
+margin: 0px 25px;
+}
+
 
 p.copyright {
     margin: 15px 0 0;
@@ -117,6 +141,7 @@ p.copyright {
     background-color: #e6ecca;
     border-color: #aec251;
 }
+
 
 .btn-default {
     border-color: #aec251;
