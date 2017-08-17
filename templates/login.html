@@ -1,94 +1,59 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-	<!--<meta charset="utf-8">-->
-	<!--<title>Shopping List</title>-->
-    <!--<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">-->
-<!--</head>-->
-<!--<body>-->
-    <!--<div id='center'>-->
-        <!--<div class="form-wrapper">-->
-
-        <!--<form id="login" name="login" method="POST" action="">-->
-            <!--<h2>My Shopping List</h2>-->
-	<!--{% if error %}-->
-	<!--<p class=error><strong>Error:</strong>{{ error }}</p>-->
-	<!--{% endif %}-->
-            <!--<p>Fill in the form below to view your shopping lists</p>-->
-            <!--<p>Don't have an account? Sign up <a href="/signup">here</a></p>-->
-            <!--<input type="text" name='email' placeholder="Email"/>-->
-            <!--<input type="password" name='password' placeholder="Password"/>-->
-            <!--<input id="btn" type="submit" value="Login"/>-->
-        <!--</form>-->
-        <!--</div>-->
-
-    <!--</div>-->
-
-
-
-<!--</body>-->
-<!--</html>-->
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Shopping List</title>
-    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Shopping List</title>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
+
 <body>
 
 <div class="top">
 <h2>My Shopping List</h2>
 </div>
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-          <div class="navbar-header">
-          </div>
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-      <li><a href="/">Home</a></li>
-      <li><a href="/welcome">Welcome</a></li>
-                  <li><a href="/log">Log In</a></li>
-                        <li><a href="/register">Register</a></li>
 
-              </ul>
-
-
-               <form id="login" name="login" method="POST" action="">
-            <h2>My Shopping List</h2>
-	{% if error %}
-	<p class=error><strong>Error:</strong>{{ error }}</p>
-	{% endif %}
-            <p>Fill in the form below to view your shopping lists</p>
-            <p>Don't have an account? Sign up <a href="/signup">here</a></p>
-            <input type="text" name='email' placeholder="Email"/>
-            <input type="password" name='password' placeholder="Password"/>
-            <input id="btn" type="submit" value="Login"/>
-        </form>
-
-
-
-
-
-
-        </div>
-
-    </div>
-
-
-          </div>
-        </div>
-    </nav>
-
-
-<div class="container">
-    {% block content %}
-    {% endblock %}
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<div class="container topnav">
+<div class="navbar-header">
 </div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li><a href="/login">Log In</a></li>
+<li><a href="/signup">Register</a></li>
+
+</ul>
+
+<div class="signin" >
+<h1>Log In</h1>
+{% if error %}
+<p class=error><strong>Error:</strong>{{ error }}</p>
+{% endif %}
+
+<form form id="login" name="login" method="POST" action="">
+<dl>
+<div class="name">
+<dt>Email</dt>
+<dd><input type="text" name='email'/> </dd>
+</div>
+<div class="pass">
+<dt>Password</dt>
+<dd><input type="password" name='password'/> </dd>
+</div>
+</dl>
+
+<p><input id="btn" type="submit" value="Login"/> </p>
+</form>
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+</nav>
+
 </body>
 </html>
