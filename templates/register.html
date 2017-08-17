@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block content %}
+
+<div class="register" >
+<h1>Register</h1>
+{% if error %}
+<p class=error><strong>Error:</strong>{{ error }}</p>
+{% endif %}
+
+<form action="{{url_for('register')}}" method="POST">
+    <dl>
+        <dt>Username:</dt>
+        <dd><input type=text name=rname> </dd>
+
+        <dt>Password:</dt>
+        <dd><input type=password name=pword> </dd>
+    </dl>
+
+        <p><input type=submit value=Login> </p>
+</form>
+
+{% for messages in get_flashed_messages() %}
+    <div class=flash>
+        {{ messages }}
+    </div>
+{% endfor %}
+{% endblock %}
