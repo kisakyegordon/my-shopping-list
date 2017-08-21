@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>SHOPPING LIST</title>
-	<!--<link href="../static/css/style.css" rel="stylesheet">-->
+<meta charset="UTF-8">
+<title>Shopping List</title>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
+
 <body>
-    <div class="header-wrapper"><header id="navigation">
-        <div class="left"><h1>SHOPPING LIST</h1></div>
-            <div class="right">
-                <ul>
-                    <li><a href="#">Welcome</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-        </div>
-    </header>
-    </div>
-    <div id='center'>
-	<section id="content" >
-        <h2>Your Shopping Lists</h2>
-				<ul class="list">
-				{% for item in lists.keys()%}
-					<li><a class="item" href="/item/{{ item }}">{{ item }}</a><a class="side" href="#">edit</a><a class="side" href="/delete_list/{{ item }}">delete</a></li>
-				{% endfor %}
-			</ul>
-        <div class="add">
-               <p><a href="/add_list">Add List</a></p>
-        </div>
+
+<div class="top">
+<h2>My Shopping List</h2>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<div class="container topnav">
+<div class="navbar-header">
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li><a href="/#">Hi, </a></li>
+<li><a href="/logout">Log Out</a></li>
+
+</ul>
+
+
+<div class="signin" >
+
+<section id="content" >
+<h2>View Shopping Lists</h2>
+	<h3>Click On List To View Items </h3>
+<ul class="list">
+{% for item in lists.keys() %}
+<li><a class="item" href="/item/{{ item }}">{{ item }}</a><a class="side" href="#">edit</a><a class="side" href="/delete_list/{{ item }}">delete</a></li>
+{% endfor %}
+</ul>
+<div class="add">
+<p><a href="/add_list">Add List</a></p>
+</div>
 </section>
-    </div>
-<footer id="footer">
-		<div id="center">
-			<div class="text-center">
-				<p>Copyright &copy; 2017 - <a href="/add_list">Shopping List</a> | All Rights Reserved</p>
-			</div>
-		</div>
-	</footer>
+</div>
+</div>
+																																																										</div>
+
+</div>
+
+</div>
+</div>
+</nav>
 
 </body>
 </html>
