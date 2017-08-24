@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Shopping List</title>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="top">
+<h2>My Shopping List</h2>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+<div class="container topnav">
+<div class="navbar-header">
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li><a href="/#">Hi, </a></li>
+<li><a href="/logout">Log Out</a></li>
+
+</ul>
+
+
+<div class="signin" >
+
+<section id="content" >
+<h2>View Shopping Lists</h2>
+
+<ul class="list">
+<table>
+{% for item in lists.keys()%}
+<tr>
+<td style="width: 220px;"><a class="item" href="/item/{{ item }}">{{ item }}</a></td>   <td style="width: 65px;"><a class="side" href="/updatelist">edit</a></td>   <td ><a class="side" href="/delete_list/{{ item }}">delete</a></td>
+
+</tr>
+{% endfor %}
+</table>
+</ul>
+<div class="add">
+<p><a href="/add_list">Add List</a></p>
+</div>
+</section>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</nav>
+
+</body>
+</html>
