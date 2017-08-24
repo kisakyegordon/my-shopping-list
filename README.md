@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/kisakyegordon/gordy-shopping-list.svg?branch=master)](https://travis-ci.org/kisakyegordon/gordy-shopping-list)
+[![Build Status](https://travis-ci.org/kisakyegordon/my-shopping-list.svg?branch=master)](https://travis-ci.org/kisakyegordon/my-shopping-list)
+
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/filp/whoops.svg)]()
 
 # gordy-shopping-list
 The shopping list is an application that allows users to record and share things they want to spend money on, hence meeting the needs of keeping track of their shopping lists.
