@@ -3,8 +3,23 @@ cache:
 - pip
 python:
 - "3.5"
+
+install:
+  - pip install coveralls
+  - pip install coverage
+  - pip install flask
+  
 install:
 - pip install -r requirements.txt
+
 script:
 - nosetests tests/tests.py
 
+cache: pip
+
+install:
+  - pip install coveralls
+  - pip install coverage
+  - pip install flask
+
+after_success: coveralls
