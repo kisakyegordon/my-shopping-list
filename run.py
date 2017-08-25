@@ -9,7 +9,20 @@ users = {'a': 'a', 'a1': 'a1'}
 user = User()
 
 
+# Check if user logged in
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('Unauthorised, Please Log In')
+            return redirect(url_for('login'))
+
+    return wrap
+
 @app.route('/index')
+@is_logged_in
 def index():
     """ Route to the index page - that displays all shopping lists """
     lists = user.shopping_lists
@@ -25,13 +38,14 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
-        if name and password:
-            users[name] = password
+        if email and password:
+            users[email] = password
             return redirect(url_for('login'))
     return render_template('signup.html', error=error)
 
 
 @app.route('/add_list', methods=['GET', 'POST'])
+@is_logged_in
 def add_list():
     """ Route to the add_list page - that displays a page where lists can be added """
     error = None
@@ -46,6 +60,7 @@ def add_list():
 
 
 @app.route('/add_item', methods=['GET', 'POST'])
+@is_logged_in
 def add_item():
     """ Route to the add_item page - that displays a page where items can be added to a list """
     error = None
@@ -59,19 +74,10 @@ def add_item():
     return render_template('add_list.html', error=error)
 
 
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        """ Login page Session Innitializer """
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            flash("You need to login first.")
-            return redirect(url_for('log'))
-    return wrap
 
 
 @app.route('/logout')
+@is_logged_in
 def logout():
     """ Logout kills current running session """
     session.pop('logged_in', None)
@@ -80,7 +86,7 @@ def logout():
 
 
 @app.route('/item/<list_name>')
-@login_required
+@is_logged_in
 def item(list_name):
     """ Route to the item page - that displays items belonging to a particular shopping list """
     items = user.read_list(list_name)
@@ -88,6 +94,7 @@ def item(list_name):
 
 
 @app.route('/delete/<list_name>/<item_name>')
+@is_logged_in
 def delete(list_name, item_name):
     """ Route to the delete functionality - erases content held by the dictionary """
     user.delete_shopping_list_item(list_name, item_name)
@@ -96,6 +103,7 @@ def delete(list_name, item_name):
 
 
 @app.route('/delete_list/<list_name>')
+@is_logged_in
 def delete_list(list_name):
     """ Route to the delete functionality - erases shopping list from a dictionary """
     user.delete_shopping_list(list_name)
@@ -103,6 +111,7 @@ def delete_list(list_name):
     return render_template('index.html')
 
 @app.route('/updatelist', methods=['GET', 'POST'])
+@is_logged_in
 def updatelist():
     """ Route to the update list page - that enables editing of lists """
     error = None
@@ -118,6 +127,7 @@ def updatelist():
 
 
 @app.route('/updatelistitem', methods=['GET', 'POST'])
+@is_logged_in
 def updatelistitem():
     """ Route to the update list item page - that enables editing of list items """
     error = None
@@ -131,6 +141,7 @@ def updatelistitem():
             user.update_shopping_list_item(list_name, item_name, new_name)
             return redirect(url_for('item', list_name=list_name))
     return render_template('updatelistitem.html', error=error)
+
 
 @app.route('/')
 @app.route('/login', methods=['GET', 'POST'])
