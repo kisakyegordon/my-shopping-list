@@ -21,7 +21,7 @@
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav navbar-right">
 <li><a href="/#">Hi, </a></li>
-	<li><a href="/index">View Lists</a></li>
+<li><a href="/index">View Lists</a></li>
 <li><a href="/logout">Log Out</a></li>
 
 
@@ -30,23 +30,22 @@
 
 <div class="signin" >
 
-	<section id="content-add" >
-        <h2>Add list</h2>
-				<form id="add" name="login" method="POST" action="">
-					{% if error %}
-					<p class=error><strong>Error:</strong>{{ error }}</p>
-					{% endif %}
-						<!--<p>Back to lists<a href="/index"> Click here</a></p>-->
-						<div class="field">
-						<label>List Name</label>
-						<input type="text" name='list_name'/>
-						</div>
-						<div class="field">
-						<label>List Items</label>
-						<input type="text" name='items'/>
-						</div>
-						<input id="btn" type="submit" value="add"/>
-				</form>
+<section id="content-add" >
+<h2>Add list</h2>
+<form id="add" name="login" method="POST" action="">
+{% if error %}
+<p class=error><strong>Error:</strong>{{ error }}</p>
+{% endif %}
+<div class="field">
+<label>List Name</label>
+<input type="text" name='list_name'/>
+</div>
+<div class="field">
+<label>List Items</label>
+<input type="text" name='items'/>
+</div>
+<input id="btn" type="submit" value="add"/>
+</form>
 </section>
 
 
@@ -54,7 +53,7 @@
 
 </div>
 </div>
-																																																										</div>
+</div>
 
 </div>
 

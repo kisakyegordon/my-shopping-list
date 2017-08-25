@@ -26,6 +26,11 @@ a:hover, .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav>li>a:h
   color: #687430;
 }
 
+@supports (input:placeholder-shown) {
+  input:not(:placeholder-shown) {
+  }
+}
+
 .top{
 background: #17c0d0;
 padding: 20px 0px;
