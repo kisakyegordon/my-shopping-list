@@ -9,9 +9,9 @@ users = {'a': 'a', 'a1': 'a1'}
 user = User()
 
 
-# Check if user logged in
 def is_logged_in(f):
     @wraps(f)
+        """ Ensure User Is Logged In """
     def wrap(*args, **kwargs):
         if 'logged_in' in session:
             return f(*args, **kwargs)
