@@ -34,4 +34,24 @@ The shopping list is an application that allows users to record and share things
 Then install all the required dependencies
 
 ```
+pip install -r requirements.txt
+```
+
+Then run the application
+
+```
+python run.py
+```
+
+To now view the application head over to
+```
+http://localhost:5000
+```
+ 
+### Testing
+You can then run the application tests using
+```
+cd my-shopping-list
+nosetests tests/tests.py
+```
 
