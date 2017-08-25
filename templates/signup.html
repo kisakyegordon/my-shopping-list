@@ -35,17 +35,17 @@
 <dl>
 <div class="email">
 <dt>Name</dt>
-<dd><input type="text" name="name"/> </dd>
+<dd><input required type="text" name="name" placeholder=" "/> </dd>
 </div>
 
 <div class="name">
 <dt>Email</dt>
-<dd><input type="text" name="email"/> </dd>
+<dd><input required type="email" name="email" placeholder=" "/> </dd>
 </div>
 
 <div class="pass">
 <dt>Password</dt>
-<dd><input type="password" name="password"/> </dd>
+<dd><input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" type="password" name="password" required placeholder=" "/> </dd>
 </div>
 </dl>
 
