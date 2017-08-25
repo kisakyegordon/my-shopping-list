@@ -29,7 +29,7 @@ class ShopTestCase(unittest.TestCase):
     def test_create_shopping_list_when_list_already_exists(self):
         self.user.shopping_lists = {'tuesday': ['food']}
         self.assertEqual(self.user.create_shopping_list('tuesday', 'food'),
-                         'shopping list already exists!', msg='Shopping List already exists!')
+                         'Shopping List already exists!', msg='Shopping List already exists!')
 
     def test_update_shopping_list(self):
         self.user.shopping_lists = {'tuesday': ['food']}
